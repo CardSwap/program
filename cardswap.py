@@ -10,9 +10,13 @@ print("Loading[|   ]Libraries")
 import random as r
 import time as t
 t.sleep(0.5)
+#Other Functions
+def printspam():
+    for i in range(0,25):
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 #Data
 print("Loading[||  ]Data")
-players=0
+player=0
 t.sleep(0.5)
 #Cards
 print("Loading[||| ]Cards")
@@ -45,11 +49,9 @@ def game(players):
             cardadd=r.choice(cardbank)
             h2.append(cardadd)
             cardbank.remove(cardadd)
+        rounds=15
         h1=sorted(h1)
         h2=sorted(h2)
-        print(h1)
-        print(h2)
-        print(cardbank)
     elif players == 3:
         h1=[]
         h2=[]
@@ -68,13 +70,10 @@ def game(players):
             cardadd=r.choice(cardbank)
             h3.append(cardadd)
             cardbank.remove(cardadd)
+        rounds=12
         h1=sorted(h1)
         h2=sorted(h2)
         h3=sorted(h3)
-        print(h1)
-        print(h2)
-        print(h3)
-        print(cardbank)
     elif players == 4:
         h1=[]
         h2=[]
@@ -97,15 +96,11 @@ def game(players):
             cardadd=r.choice(cardbank)
             h4.append(cardadd)
             cardbank.remove(cardadd)
+        rounds=10
         h1=sorted(h1)
         h2=sorted(h2)
         h3=sorted(h3)
         h4=sorted(h4)
-        print(h1)
-        print(h2)
-        print(h3)
-        print(h4)
-        print(cardbank)
     elif players == 5:
         h1=[]
         h2=[]
@@ -132,17 +127,12 @@ def game(players):
             cardadd=r.choice(cardbank)
             h5.append(cardadd)
             cardbank.remove(cardadd)
+        rounds=9
         h1=sorted(h1)
         h2=sorted(h2)
         h3=sorted(h3)
         h4=sorted(h4)
         h5=sorted(h5)
-        print(h1)
-        print(h2)
-        print(h3)
-        print(h4)
-        print(h5)
-        print(cardbank)
     elif players == 6:
         h1=[]
         h2=[]
@@ -173,19 +163,13 @@ def game(players):
             cardadd=r.choice(cardbank)
             h6.append(cardadd)
             cardbank.remove(cardadd)
+        rounds=8
         h1=sorted(h1)
         h2=sorted(h2)
         h3=sorted(h3)
         h4=sorted(h4)
         h5=sorted(h5)
         h6=sorted(h6)
-        print(h1)
-        print(h2)
-        print(h3)
-        print(h4)
-        print(h5)
-        print(h6)
-        print(cardbank)
     elif players == 7:
         h1=[]
         h2=[]
@@ -198,7 +182,7 @@ def game(players):
         for x in range(1,14):
             for z in range(0,cards[x]):
                 cardbank.append(x)
-        for i in range(0,8):
+        for i in range(0,7):
             cardadd=r.choice(cardbank)
             h1.append(cardadd)
             cardbank.remove(cardadd)
@@ -220,6 +204,7 @@ def game(players):
             cardadd=r.choice(cardbank)
             h7.append(cardadd)
             cardbank.remove(cardadd)
+        rounds=7
         h1=sorted(h1)
         h2=sorted(h2)
         h3=sorted(h3)
@@ -227,14 +212,6 @@ def game(players):
         h5=sorted(h5)
         h6=sorted(h6)
         h7=sorted(h7)
-        print(h1)
-        print(h2)
-        print(h3)
-        print(h4)
-        print(h5)
-        print(h6)
-        print(h7)
-        print(cardbank)
     elif players == 8:
         h1=[]
         h2=[]
@@ -248,7 +225,7 @@ def game(players):
         for x in range(1,14):
             for z in range(0,cards[x]):
                 cardbank.append(x)
-        for i in range(0,8):
+        for i in range(0,6):
             cardadd=r.choice(cardbank)
             h1.append(cardadd)
             cardbank.remove(cardadd)
@@ -273,6 +250,7 @@ def game(players):
             cardadd=r.choice(cardbank)
             h8.append(cardadd)
             cardbank.remove(cardadd)
+        rounds=6
         h1=sorted(h1)
         h2=sorted(h2)
         h3=sorted(h3)
@@ -281,15 +259,40 @@ def game(players):
         h6=sorted(h6)
         h7=sorted(h7)
         h8=sorted(h8)
-        print(h1)
-        print(h2)
-        print(h3)
-        print(h4)
-        print(h5)
-        print(h6)
-        print(h7)
-        print(h8)
-        print(cardbank)
+    print("Play starts with P1.")
+    roundnum=0
+    for i in range(0,rounds):
+        roundnum+=1
+        print("-----[Round "+str(roundnum)+"]-----")
+        playerturn=1
+        for x in range(0, players):         
+            print("It's P"+str(playerturn)+"'s turn!")
+            input("Pass to P"+str(playerturn)+", then press ENTER")
+            goodcard=False
+            playerhand=locals()["h"+str(playerturn)]
+            playerkeep=globals()["p"+str(playerturn)]
+            while goodcard==False:
+                print("Your cards are: "+str(playerhand))
+                try:
+                    choosecard=int(float(input("What card do you want to keep?")))
+                except:
+                    print("Oops! Thats not a valid card...")
+                    continue
+                if choosecard in playerhand:
+                    print("Taking the "+str(choosecard))
+                    playerkeep[choosecard]+=1
+                    playerhand.remove(choosecard)
+                    goodcard=True
+                else:
+                    print("Oops! Thats not a valid card...")
+            playerturn+=1
+        keephand=
+        ddhj1234556767878914678-39 56-8179=1687
+        for x in range(1, players+1):
+            if x == 1:
+                locals()["h"+str(x)]=locals()["h"+str(players)]
+            else:
+                locals()["h"+str(x)], keephand = keephand, locals()["h"+str(x)]
 t.sleep(1)
 #Main Loop
 print("Loading Complete!")
@@ -310,8 +313,8 @@ while True:
             print("Oops! That's not a valid number...")
             continue
         if playercount >=2 and playercount <=8:
-            players=playercount
-            print("The player count has been set to "+str(players)+".")
+            player=playercount
+            print("The player count has been set to "+str(player)+".")
             chooseplayers=True
         else:
             print("Oops! This game can only support 2-8 players.")
@@ -346,11 +349,11 @@ while True:
                 print("Oops! That's not a valid number...")
                 continue
             if playercount >=2 and playercount <=8:
-                players=playercount
-                print("The player count has been set to "+str(players)+".")
+                player=playercount
+                print("The player count has been set to "+str(player)+".")
                 chooseplayers=True
             else:
                 print("Oops! This game can only support 2-8 players.")
     #Start Game
     elif menuchoice == 2:
-        game(players)
+        game(player)
