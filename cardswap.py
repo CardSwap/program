@@ -265,7 +265,10 @@ def game(players):
         roundnum+=1
         print("-----[Round "+str(roundnum)+"]-----")
         playerturn=1
-        for x in range(0, players):         
+        sleep(2)
+        for x in range(0, players): 
+            for i in range(0, 8):
+                print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")        
             print("It's P"+str(playerturn)+"'s turn!")
             input("Pass to P"+str(playerturn)+", then press ENTER")
             goodcard=False
@@ -286,13 +289,23 @@ def game(players):
                 else:
                     print("Oops! Thats not a valid card...")
             playerturn+=1
-        keephand=
-        ddhj1234556767878914678-39 56-8179=1687
-        for x in range(1, players+1):
-            if x == 1:
-                locals()["h"+str(x)]=locals()["h"+str(players)]
-            else:
-                locals()["h"+str(x)], keephand = keephand, locals()["h"+str(x)]
+        if players == 2:
+            h1, h2 = h2, h1
+        elif players == 3:
+            h1, h2, h3 = h2, h3, h1
+        elif players == 4:
+            h1, h2, h3, h4 = h2, h3, h4, h1
+        elif players == 5:
+            h1, h2, h3, h4, h5 = h2, h3, h4, h5, h1
+        elif players == 6:
+            h1, h2, h3, h4, h5, h6 = h2, h3, h4, h5, h6, h1
+        elif players == 7:
+            h1, h2, h3, h4, h5, h6, h7 = h2, h3, h4, h5, h6, h7, h1
+        elif players == 8:
+            h1, h2, h3, h4, h5, h6, h7, h8 = h2, h3, h4, h5, h6, h7, h8, h1
+        print("GAME COMPLETE")
+        print("Scoring...")
+        
 t.sleep(1)
 #Main Loop
 print("Loading Complete!")
